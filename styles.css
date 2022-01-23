@@ -1,0 +1,110 @@
+* {
+    /* background-color: #22202f; */
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: #22202f;
+}
+
+li,a,button{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    color: #c6c6c6;
+    text-decoration: none;
+}
+header{
+    background-color: #2F2A3E;
+    display: flex;
+    justify-content: flex-end;
+    height: 45px;
+    align-items: center;
+    padding: 20px 10% ;
+    box-shadow: 0 0 25px 0 black;
+}
+
+.nav_links{
+    list-style: none;
+}
+
+.nav_links li{
+    display: inline-block;
+    padding: 0px 20px;
+}
+
+.nav_links li a{
+    transition: all 0.3s ease 0s;
+}
+
+.nav_links li a:hover{
+    color:#dbadf1;
+}
+
+.nav_links li a:active{
+    color:#dbadf1;
+}
+
+.checkbox{
+    margin-right: auto;
+}
+
+input{
+    margin-right: 20px;
+}
+
+.toggle {
+    position : relative ;
+    display : inline-block;
+    width : 50px;
+    height : 25px;
+    background-color:#dbadf1;
+    border-radius: 15px;
+    /* border: 2px solid gray; */
+}
+        
+/* After slide changes */
+.toggle:after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 24px;
+    border-radius: 50%;
+    background-color:#22202f;
+    top: 1px; 
+    left: 1px;
+    transition:  all 0.5s;
+}
+
+p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+        
+/* Checkbox checked effect */
+.checkbox:checked + .toggle::after {
+    left : 25px; 
+}
+        
+/* Checkbox checked toggle label bg color */
+.checkbox:checked + .toggle {
+    background-color:#7f64e7;
+}
+        
+/* Checkbox vanished */
+.checkbox { 
+    display : none;
+}
+
+footer{
+    position: fixed;
+    padding: 10px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background-color: #2F2A3E;
+    color:#7f64e7;
+    text-align: center;
+}
