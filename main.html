@@ -16,9 +16,18 @@
             </nav>
         </header>
         <main>
-            <h1>GRAPH VISUALIZING TOOL</h1>
+            <div class="Heading">
+                <h1>
+                    <span>Graph Visualizing Tool</span>
+                    <svg id="playButton" width="33" height="37" viewBox="0 0 33 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M31 15.0359C33.6667 16.5755 33.6667 20.4245 31 21.9641L6.24999 36.2535C3.58333 37.7931 0.250002 35.8686 0.250002 32.7894L0.250003 4.21057C0.250004 1.13137 3.58334 -0.793123 6.25 0.746479L31 15.0359Z" fill="#7F64E7"/>
+                    </svg>
+                </h1>
+            </div>
             <div class="wrapper">
-                <div class="input"></div>
+                <div class="input">
+                    <textarea name="h" id="inputText" cols="60" rows="17" placeholder="Input Text..."></textarea>
+                </div>
                 <div class="graph">
                     <canvas id="canvas1"></canvas>
                 </div>

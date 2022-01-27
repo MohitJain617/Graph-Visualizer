@@ -42,21 +42,35 @@ let drawCanvas = ()=>{
 			ctx.font = "30px Sans-serif";
 			ctx.fillStyle = cyanclr;
 			ctx.textAlign = "center";
-			ctx.fillText(this.idx,this.x,this.y+10)
+			ctx.fillText(this.idx+1,this.x,this.y+10)
 		}
 	}
 
 	function init(){
-		for(let i = 0; i < 8; i++){
+		let input = document.getElementById("inputText").value;
+		input = input.trim().split(/\s+/);
+		let n = parseInt(input[0]);
+		let m = parseInt(input[1]);
+		for(let i = 0; i < n; i++){
 			graph.nodes.push(new Node(i))
 		}
-		graph.links.push({source: 0, target: 1});
-		graph.links.push({source: 0, target: 2});
-		graph.links.push({source: 1, target: 3});
-		graph.links.push({source: 1, target: 4});
-		graph.links.push({source: 6, target: 7});
-		graph.links.push({source: 6, target: 5});
-		graph.links.push({source: 5, target: 7});
+		if(input.length % 2 !== 0) alert("Invalid inputs");
+		else {
+			for(let i = 2; i < input.length; i+=2){
+				let a = parseInt(input[i]);
+				a--;
+				let b = parseInt(input[i+1]);
+				b--;
+				graph.links.push({source: a, target: b});
+			}
+		}
+		// graph.links.push({source: 0, target: 1});
+		// graph.links.push({source: 0, target: 2});
+		// graph.links.push({source: 1, target: 3});
+		// graph.links.push({source: 1, target: 4});
+		// graph.links.push({source: 6, target: 7});
+		// graph.links.push({source: 6, target: 5});
+		// graph.links.push({source: 5, target: 7});
 	}
 
 	//draws link given 2 nodes
@@ -128,4 +142,5 @@ let drawCanvas = ()=>{
 	drawGraph();
 }
 
-drawCanvas();
+let play = document.getElementById("playButton");
+play.addEventListener("click", drawCanvas);
