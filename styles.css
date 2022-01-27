@@ -131,8 +131,10 @@ main h1{
 }
 
 .wrapper > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color : #2F2A3E;
-    padding: 1em;
     color: white;
     border-radius: 15px;
 }
@@ -146,9 +148,11 @@ textarea{
 }
 #inputText {
     color: white;
+    font-size: 20px;
     background-color: #2F2A3E;
     border: 0px;
     border-color: #2F2A3E;
+    padding: 1em;
 }
 #inputText:focus {
     outline: none !important;
@@ -168,4 +172,11 @@ textarea{
 .params{
     grid-row: 3/4;
     box-shadow: 3px 5px 5px -5px black;
+}
+
+#playButton{
+    transition: all .2s ease-in-out;
+}
+#playButton:hover {
+    transform: scale(1.25);
 }

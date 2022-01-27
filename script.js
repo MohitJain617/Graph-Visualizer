@@ -29,6 +29,7 @@ let drawCanvas = ()=>{
 			this.size = r;
 			// this.color = colors[Math.floor(Math.random() * colors.length)];
 			this.color = purpleclr;
+			this.isFixed = false;
 		}
 		draw(){
 			ctx.fillStyle = bgclr;
@@ -64,13 +65,6 @@ let drawCanvas = ()=>{
 				graph.links.push({source: a, target: b});
 			}
 		}
-		// graph.links.push({source: 0, target: 1});
-		// graph.links.push({source: 0, target: 2});
-		// graph.links.push({source: 1, target: 3});
-		// graph.links.push({source: 1, target: 4});
-		// graph.links.push({source: 6, target: 7});
-		// graph.links.push({source: 6, target: 5});
-		// graph.links.push({source: 5, target: 7});
 	}
 
 	//draws link given 2 nodes
@@ -111,22 +105,34 @@ let drawCanvas = ()=>{
 	// Copyright 2021 Observable, Inc.
 	// Released under the ISC license.
 	// https://observablehq.com/@d3/force-directed-graph
+
+	let tofix = false;
 	let dragsubject = () => {
-		return simulation.find(d3.event.x, d3.event.y);
+		return simulation.find(d3.event.x, d3.event.y, r+5);
 	}
 	let dragstarted = () => {
 		if (!d3.event.active) simulation.alphaTarget(0.3).restart();
 		d3.event.subject.fx = d3.event.subject.x;
 		d3.event.subject.fy = d3.event.subject.y;
+		tofix = true;
 	}
 	let dragged = () => {
 		d3.event.subject.fx = d3.event.x;
 		d3.event.subject.fy = d3.event.y;
+		tofix = false;
 	}
 	let dragended = () => {
 		if(!d3.event.active) simulation.alphaTarget(0);
-		d3.event.subject.fx = null;
-		d3.event.subject.fy = null;
+		if(tofix === true){
+			d3.event.subject.isFixed = !d3.event.subject.isFixed;
+		} 
+		if(d3.event.subject.isFixed){
+			//since this is fixed we needn't do anything.
+		}
+		else {
+			d3.event.subject.fx = null;
+			d3.event.subject.fy = null;
+		}
 	}
 
 	d3.select(canvas)
